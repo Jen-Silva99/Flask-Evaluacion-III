@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Ejercicio 1{% endblock %}
+{% block content %}
+<section>
+  <h2>Ejercicio 1: Formulario de Notas</h2>
+  <form method="post" class="form-grid">
+    <label>Nota 1:
+      <input type="number" name="nota1" min="10" max="70" step="0.1" required>
+    </label>
+    <label>Nota 2:
+      <input type="number" name="nota2" min="10" max="70" step="0.1" required>
+    </label>
+    <label>Nota 3:
+      <input type="number" name="nota3" min="10" max="70" step="0.1" required>
+    </label>
+    <label>Asistencia (%):
+      <input type="number" name="asistencia" min="0" max="100" step="1" required>
+    </label>
+    <button type="submit" class="btn">Enviar</button>
+  </form>
+
+  {% if errores %}
+    <ul class="alert">
+      {% for e in errores %}<li>{{ e }}</li>{% endfor %}
+    </ul>
+  {% endif %}
+
+  {% if resultado %}
+    <div class="card success">
+      <p><strong>Promedio:</strong> {{ resultado.promedio }}</p>
+      <p><strong>Asistencia:</strong> {{ resultado.asistencia }}</p>
+      <p><strong>Estado:</strong> {{ resultado.estado }}</p>
+    </div>
+  {% endif %}
+</section>
+{% endblock %}
